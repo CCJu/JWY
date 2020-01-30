@@ -2,7 +2,7 @@
  * frxs Inc.  湖南兴盛优选电子商务有限公司.
  * Copyright (c) 2017-2019. All Rights Reserved.
  */
-package com.jfc.furlough.domain;
+package com.jfc.jwy.furlough.domain;
 
 /**
  * @author juchengcheng
