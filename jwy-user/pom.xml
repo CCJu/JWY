@@ -6,7 +6,14 @@
 
     <groupId>com.jfc</groupId>
     <artifactId>jwy-user</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
-
+    <modules>
+        <module>jwy-user-service-api</module>
+        <module>jwy-user-service-api</module>
+        <module>jwy-user-dao</module>
+        <module>jwy-user-core</module>
+        <module>jwy-user-service-impl</module>
+    </modules>
 </project>
