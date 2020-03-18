@@ -11,5 +11,18 @@
 
     <artifactId>jwy-user-service-impl</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.jfc</groupId>
+            <artifactId>jwy-user-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
+        <dependency>
+            <groupId>com.jfc</groupId>
+            <artifactId>jwy-user-service-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
 </project>
