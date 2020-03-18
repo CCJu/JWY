@@ -16,5 +16,13 @@ public class UserJurisdictionInfo implements Serializable {
 
     private static final long serialVersionUID = 3230805601626550794L;
 
+    /**
+     * 服务ID
+     */
+    private String serviceId;
 
+    /**
+     * 权限URL
+     */
+    private String serviceUrl;
 }

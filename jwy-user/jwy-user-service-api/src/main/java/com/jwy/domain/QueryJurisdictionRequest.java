@@ -25,7 +25,7 @@ public class QueryJurisdictionRequest implements Serializable {
     private String roleName;
 
     /**
-     *
+     * 用户ID
      */
     private String userId;
 }
