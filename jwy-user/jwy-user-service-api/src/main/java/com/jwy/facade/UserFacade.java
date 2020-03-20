@@ -15,14 +15,6 @@ import java.util.List;
 public interface UserFacade {
 
     /**
-     * 登录
-     *
-     * @param request 登录请求（账户+密码）
-     * @return 登录结果（成功返回token，异常返回错误信息）
-     */
-    UserResult<LoginResponse> login(LoginRequest request);
-
-    /**
      * 查询用户权限信息
      *
      * @param request 查询请求

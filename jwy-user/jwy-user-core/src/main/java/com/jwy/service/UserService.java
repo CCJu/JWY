@@ -1,0 +1,57 @@
+/*
+ * frxs Inc.  湖南兴盛优选电子商务有限公司.
+ * Copyright (c) 2017-2019. All Rights Reserved.
+ */
+package com.jwy.service;
+
+import com.jwy.base.expection.UserException;
+import com.jwy.domain.*;
+import com.jwy.workflow.login.LoginSupport;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+/**
+ * 用户服务
+ *
+ * @author juchengcheng
+ * @version : UserService.java,v 0.1 2020年03月20日 14:07
+ */
+@Service
+@Log4j2
+public class UserService {
+
+    @Resource
+    private LoginSupport loginSupport;
+
+    public UserResult<LoginResponse> login(LoginRequest request) {
+        return null;
+    }
+
+    public UserResult<String> exit(ExitRequest request) {
+        try {
+            loginSupport.exit(request);
+            return UserResult.success("退出登录成功");
+        } catch (UserException e) {
+            log.error("用户退出登录异常", e);
+            return UserResult.fail(e.getErrorEnum().getDesc());
+        } catch (Throwable e) {
+            log.error("用户退出登录捕捉到异常", e);
+            return UserResult.fail(e.getMessage());
+        }
+    }
+
+    public UserResult<List<UserJurisdictionInfo>> queryUserJurisdiction(QueryJurisdictionRequest request) {
+        return null;
+    }
+
+    public UserResult<List<UserInfo>> queryUserInfo(QueryUserInfoRequest request) {
+        return null;
+    }
+
+    public UserResult<String> updateUserScore(String userId, int score) {
+        return null;
+    }
+}

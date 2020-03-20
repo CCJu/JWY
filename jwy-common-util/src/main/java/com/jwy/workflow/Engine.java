@@ -4,7 +4,6 @@
  */
 package com.jwy.workflow;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Component;
  * @version : Engine.java,v 0.1 2020年03月13日 11:44
  */
 @Component
-@Slf4j
 public class Engine {
 
     public Engine() {
@@ -29,7 +27,6 @@ public class Engine {
         // 流程中获取节点
         Node<T> node = processDefinition.getNodeByName(nodeName);
         if (node == null) {
-            log.error("无法获取节点");
             return;
         }
         try {
@@ -37,8 +34,7 @@ public class Engine {
             if (!result.isFinish()) {
                 this.execute(t, processDefinition, result.getNextName());
             }
-        } catch (Throwable e) {
-            log.error("捕捉到异常", e);
+        } catch (Throwable ignored) {
         }
     }
 }

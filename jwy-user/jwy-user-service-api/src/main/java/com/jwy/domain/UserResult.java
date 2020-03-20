@@ -33,4 +33,30 @@ public class UserResult<T> implements Serializable {
      * 错误信息
      */
     private String errMsg;
+
+    /**
+     * 构造成功结果
+     *
+     * @param data 返回数据
+     * @return 通用返回结果
+     */
+    public static <T> UserResult<T> success(T data) {
+        UserResult<T> result = new UserResult<T>();
+        result.setData(data);
+        result.setSuccess(true);
+        return result;
+    }
+
+    /**
+     * 构造失败结果
+     *
+     * @param errMsg 失败信息
+     * @return 通用返回结果
+     */
+    public static <T> UserResult<T> fail(String errMsg) {
+        UserResult<T> result = new UserResult<T>();
+        result.setSuccess(false);
+        result.setErrMsg(errMsg);
+        return result;
+    }
 }
