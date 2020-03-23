@@ -22,9 +22,9 @@ public enum UserErrorEnum implements BaseEnum<String> {
     EXIT_REQUEST_NULL("EXIT_REQUEST_NULL", "退出请求为空"),
 
     /**
-     * 退出请求用户ID为空
+     * 退出登录请求用户ID为空
      */
-    EXIT_REQUEST_USER_ID_NULL("EXIT_REQUEST_USER_ID_NULL", "退出请求用户ID为空");
+    EXIT_REQUEST_USER_ID_NULL("EXIT_REQUEST_USER_ID_NULL", "退出登录请求用户ID为空");
 
     /**
      * 错误值

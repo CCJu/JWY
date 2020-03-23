@@ -34,7 +34,8 @@ public class Engine {
             if (!result.isFinish()) {
                 this.execute(t, processDefinition, result.getNextName());
             }
-        } catch (Throwable ignored) {
+        } catch (Throwable e) {
+            throw e;
         }
     }
 }

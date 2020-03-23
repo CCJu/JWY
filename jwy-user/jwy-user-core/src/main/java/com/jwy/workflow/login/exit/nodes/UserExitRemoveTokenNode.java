@@ -10,8 +10,9 @@ import com.jwy.workflow.Node;
 import com.jwy.workflow.NodeResult;
 import com.jwy.workflow.login.exit.UserExitContext;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * @author juchengcheng
@@ -21,7 +22,7 @@ import org.springframework.stereotype.Component;
 @Log4j2
 public class UserExitRemoveTokenNode implements Node<UserExitContext> {
 
-    @Autowired
+    @Resource
     private RedisService redisService;
 
     public String getName() {
