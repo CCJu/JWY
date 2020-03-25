@@ -12,9 +12,19 @@
         <module>jwy-furlough-dal</module>
         <module>jwy-furlough-core</module>
         <module>jwy-furlough-service-api</module>
+        <module>jwy-furlough-service-impl</module>
     </modules>
 
-    <dependencies>
-
-    </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>maven-releases</id>
+            <name>Release Repository</name>
+            <url>http://49.234.188.57:6061/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-snapshots</id>
+            <name>Snapshot Repository</name>
+            <url>http://49.234.188.57:6061/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

@@ -4,6 +4,7 @@
  */
 package com.jwy;
 
+import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +16,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @author juchengcheng
  * @version : JwyUserApplication.java,v 0.1 2020年03月18日 20:03
  */
+@EnableDubbo
 @SpringBootApplication(scanBasePackages = {"com.jwy"})
 @Log4j2
 public class JwyUserApplication {

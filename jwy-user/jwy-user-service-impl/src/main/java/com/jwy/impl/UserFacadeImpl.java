@@ -24,14 +24,17 @@ public class UserFacadeImpl implements UserFacade {
     @Resource
     private UserService userService;
 
+    @Override
     public UserResult<List<UserJurisdictionInfo>> queryUserJurisdiction(QueryJurisdictionRequest request) {
         return userService.queryUserJurisdiction(request);
     }
 
+    @Override
     public UserResult<List<UserInfo>> queryUserInfo(QueryUserInfoRequest request) {
         return userService.queryUserInfo(request);
     }
 
+    @Override
     public UserResult<String> updateUserScore(String userId, int score) {
         return userService.updateUserScore(userId, score);
     }

@@ -24,10 +24,12 @@ public class LoginFacadeImpl implements LoginFacade {
     @Resource
     private UserService userService;
 
+    @Override
     public UserResult<LoginResponse> login(LoginRequest request) {
         return userService.login(request);
     }
 
+    @Override
     public UserResult<String> exit(ExitRequest request) {
         return userService.exit(request);
     }
