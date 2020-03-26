@@ -6,6 +6,7 @@ package com.jwy;
 
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 import lombok.extern.log4j.Log4j2;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,6 +19,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  */
 @EnableDubbo
 @SpringBootApplication(scanBasePackages = {"com.jwy"})
+@MapperScan("com.jwy.mapper")
 @Log4j2
 public class JwyUserApplication {
 

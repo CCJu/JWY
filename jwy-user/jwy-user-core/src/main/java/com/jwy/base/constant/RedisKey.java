@@ -2,7 +2,7 @@
  * frxs Inc.  湖南兴盛优选电子商务有限公司.
  * Copyright (c) 2017-2019. All Rights Reserved.
  */
-package com.jwy.base.domain;
+package com.jwy.base.constant;
 
 /**
  * Redis Key
@@ -27,5 +27,9 @@ public interface RedisKey {
 
     interface User {
 
+        /**
+         * 用户权限列表
+         */
+        String USER_JURISDICTION_LIST = "jwy:user:user_jurisdiction_list";
     }
 }

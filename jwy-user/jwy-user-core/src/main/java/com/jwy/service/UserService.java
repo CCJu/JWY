@@ -27,7 +27,15 @@ public class UserService {
     private LoginSupport loginSupport;
 
     public UserResult<LoginResponse> login(LoginRequest request) {
-        return null;
+        try {
+            return UserResult.success(loginSupport.login(request));
+        } catch (UserException e) {
+            log.error("用户登录异常", e);
+            return UserResult.fail(e.getErrorEnum().getDesc());
+        } catch (Throwable e) {
+            log.error("用户登录捕捉到异常", e);
+            return UserResult.fail(e.getMessage());
+        }
     }
 
     public UserResult<String> exit(ExitRequest request) {

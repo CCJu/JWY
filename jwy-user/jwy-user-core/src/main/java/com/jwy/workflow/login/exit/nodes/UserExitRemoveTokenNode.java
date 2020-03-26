@@ -4,7 +4,7 @@
  */
 package com.jwy.workflow.login.exit.nodes;
 
-import com.jwy.base.domain.RedisKey;
+import com.jwy.base.constant.RedisKey;
 import com.jwy.util.RedisService;
 import com.jwy.workflow.Node;
 import com.jwy.workflow.NodeResult;

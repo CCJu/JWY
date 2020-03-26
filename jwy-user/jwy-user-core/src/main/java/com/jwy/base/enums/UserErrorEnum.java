@@ -24,7 +24,27 @@ public enum UserErrorEnum implements BaseEnum<String> {
     /**
      * 退出登录请求用户ID为空
      */
-    EXIT_REQUEST_USER_ID_NULL("EXIT_REQUEST_USER_ID_NULL", "退出登录请求用户ID为空");
+    EXIT_REQUEST_USER_ID_NULL("EXIT_REQUEST_USER_ID_NULL", "退出登录请求用户ID为空"),
+
+    /**
+     * 登录账户为空
+     */
+    LOGIN_ACCOUNT_NULL("LOGIN_ACCOUNT_NULL", "登录账户为空"),
+
+    /**
+     * 登录密码为空
+     */
+    LOGIN_PASSWORD_NULL("LOGIN_PASSWORD_NULL", "登录密码为空"),
+
+    /**
+     * 账户密码不匹配
+     */
+    PASSWORD_ERROR("PASSWORD_ERROR", "账户密码不匹配"),
+
+    /**
+     * 用户信息为空
+     */
+    QUERY_USER_INFO_NULL("QUERY_USER_INFO_NULL", "用户信息为空");
 
     /**
      * 错误值
@@ -36,10 +56,12 @@ public enum UserErrorEnum implements BaseEnum<String> {
      */
     private String errMsg;
 
+    @Override
     public String getValue() {
         return errValue;
     }
 
+    @Override
     public String getDesc() {
         return errMsg;
     }
