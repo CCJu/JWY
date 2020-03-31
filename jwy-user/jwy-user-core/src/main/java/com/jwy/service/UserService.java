@@ -59,7 +59,11 @@ public class UserService {
         return null;
     }
 
-    public UserResult<String> updateUserScore(String userId, int score) {
+    public UserResult<Void> updateUserScore(String userId, int score) {
+        return null;
+    }
+
+    public UserResult<Boolean> userCheckout(JwyRequest request) {
         return null;
     }
 }

@@ -35,7 +35,13 @@ public class UserFacadeImpl implements UserFacade {
     }
 
     @Override
-    public UserResult<String> updateUserScore(String userId, int score) {
+    public UserResult<Void> updateUserScore(String userId, int score) {
         return userService.updateUserScore(userId, score);
     }
+
+    @Override
+    public UserResult<Boolean> userCheckout(JwyRequest request) {
+        return userService.userCheckout(request);
+    }
+
 }

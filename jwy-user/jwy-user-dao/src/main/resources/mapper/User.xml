@@ -39,7 +39,7 @@
     </update>
 
     <select id="queryUserJurisdiction" resultType="com.jwy.entity.UserJurisdictionDto" resultMap="userJurisdiction">
-        SELECT
+        SELECT * FROM t_role_jurisdiction WHERE  roleName = #{roleName}
     </select>
 
 </mapper>

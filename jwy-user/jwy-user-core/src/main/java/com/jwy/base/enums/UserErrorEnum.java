@@ -44,7 +44,12 @@ public enum UserErrorEnum implements BaseEnum<String> {
     /**
      * 用户信息为空
      */
-    QUERY_USER_INFO_NULL("QUERY_USER_INFO_NULL", "用户信息为空");
+    QUERY_USER_INFO_NULL("QUERY_USER_INFO_NULL", "用户信息为空"),
+
+    /**
+     * 修改用户积分用户ID不能为空
+     */
+    UPDATE_SCORE_USER_ID_NOT_NULL("UPDATE_SCORE_USER_ID_NOT_NULL", "修改用户积分用户ID不能为空");
 
     /**
      * 错误值

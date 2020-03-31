@@ -35,7 +35,14 @@ public interface UserFacade {
      *
      * @param userId 用户ID
      * @param score  待修改积分（增加/减少）
-     * @return 修改结果
      */
-    UserResult<String> updateUserScore(String userId, int score);
+    UserResult<Void> updateUserScore(String userId, int score);
+
+    /**
+     * 用户权限校验
+     *
+     * @param request 用户请求
+     * @return 是否通过
+     */
+    UserResult<Boolean> userCheckout(JwyRequest request);
 }
