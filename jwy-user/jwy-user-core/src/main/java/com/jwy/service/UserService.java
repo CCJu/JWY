@@ -56,11 +56,27 @@ public class UserService {
     }
 
     public UserResult<List<UserJurisdictionInfo>> queryUserJurisdiction(QueryJurisdictionRequest request) {
-        return null;
+        try {
+            return UserResult.success(userSupport.queryUserJurisdictionInfos(request));
+        } catch (UserException e) {
+            log.error("查询用户权限异常", e);
+            return UserResult.fail(e.getErrorEnum().getDesc());
+        } catch (Throwable e) {
+            log.error("查询用户权限捕捉到异常", e);
+            return UserResult.fail(e.getMessage());
+        }
     }
 
     public UserResult<List<UserInfo>> queryUserInfo(QueryUserInfoRequest request) {
-        return null;
+        try {
+            return UserResult.success(userSupport.queryUserInfo(request));
+        } catch (UserException e) {
+            log.error("查询用户信息异常", e);
+            return UserResult.fail(e.getErrorEnum().getDesc());
+        } catch (Throwable e) {
+            log.error("查询用户信息捕捉到异常", e);
+            return UserResult.fail(e.getMessage());
+        }
     }
 
     public UserResult<Void> updateUserScore(String userId, int score) {

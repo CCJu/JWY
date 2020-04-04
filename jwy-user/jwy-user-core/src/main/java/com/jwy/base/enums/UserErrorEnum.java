@@ -64,7 +64,12 @@ public enum UserErrorEnum implements BaseEnum<String> {
     /**
      * 查询用户权限用户ID不为空
      */
-    QUERY_USER_JURISDICTION_USER_ID_NOT_NULL("QUERY_USER_JURISDICTION_USER_ID_NOT_NULL", "查询用户权限用户ID不为空");
+    QUERY_USER_JURISDICTION_USER_ID_NOT_NULL("QUERY_USER_JURISDICTION_USER_ID_NOT_NULL", "查询用户权限用户ID不为空"),
+
+    /**
+     * 查询用户信息请求为空
+     */
+    QUERY_USER_INFO_REQUEST_NOT_NULL("QUERY_USER_INFO_NOT_NULL", "查询用户信息请求为空");
 
     /**
      * 错误值

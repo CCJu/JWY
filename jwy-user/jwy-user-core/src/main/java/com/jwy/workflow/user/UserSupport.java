@@ -5,8 +5,12 @@
 package com.jwy.workflow.user;
 
 import com.jwy.domain.QueryJurisdictionRequest;
+import com.jwy.domain.QueryUserInfoRequest;
+import com.jwy.domain.UserInfo;
 import com.jwy.domain.UserJurisdictionInfo;
 import com.jwy.workflow.Engine;
+import com.jwy.workflow.user.info.query.QueryUserInfoContext;
+import com.jwy.workflow.user.info.query.QueryUserInfoProcessDefinition;
 import com.jwy.workflow.user.jurisdiction.QueryUserJurisdictionContext;
 import com.jwy.workflow.user.jurisdiction.QueryUserJurisdictionProcessDefinition;
 import com.jwy.workflow.user.score.UpdateUserScoreContext;
@@ -35,6 +39,9 @@ public class UserSupport {
 
     @Resource
     private QueryUserJurisdictionProcessDefinition queryUserJurisdictionProcessDefinition;
+
+    @Resource
+    private QueryUserInfoProcessDefinition queryUserInfoProcessDefinition;
 
     /**
      * 修改用户积分
@@ -67,5 +74,22 @@ public class UserSupport {
         engine.execute(context, queryUserJurisdictionProcessDefinition);
         // 返回结果
         return context.getUserJurisdictionInfos();
+    }
+
+    /**
+     * 查询用户信息
+     *
+     * @param request 查询请求
+     * @return 用户信息列表
+     */
+    public List<UserInfo> queryUserInfo(QueryUserInfoRequest request) {
+        // 创建上下文
+        QueryUserInfoContext context = queryUserInfoProcessDefinition.createContext();
+        // 设置上下文
+        context.setRequest(request);
+        // 执行流程
+        engine.execute(context, queryUserInfoProcessDefinition);
+        // 返回结果
+        return context.getUserInfos();
     }
 }
