@@ -4,8 +4,18 @@
  */
 package com.jwy.workflow.user;
 
+import com.jwy.domain.QueryJurisdictionRequest;
+import com.jwy.domain.UserJurisdictionInfo;
+import com.jwy.workflow.Engine;
+import com.jwy.workflow.user.jurisdiction.QueryUserJurisdictionContext;
+import com.jwy.workflow.user.jurisdiction.QueryUserJurisdictionProcessDefinition;
+import com.jwy.workflow.user.score.UpdateUserScoreContext;
+import com.jwy.workflow.user.score.UpdateUserScoreProcessDefinition;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 用户服务入口
@@ -17,4 +27,45 @@ import org.springframework.stereotype.Component;
 @Log4j2
 public class UserSupport {
 
+    @Resource
+    private Engine engine;
+
+    @Resource
+    private UpdateUserScoreProcessDefinition updateUserScoreProcessDefinition;
+
+    @Resource
+    private QueryUserJurisdictionProcessDefinition queryUserJurisdictionProcessDefinition;
+
+    /**
+     * 修改用户积分
+     *
+     * @param userId 用户ID
+     * @param score  变更积分
+     */
+    public void updateUserScore(String userId, int score) {
+        // 创建上下文
+        UpdateUserScoreContext context = updateUserScoreProcessDefinition.createContext();
+        // 设置上下文
+        context.setScore(score);
+        context.setUserId(userId);
+        // 执行流程
+        engine.execute(context, updateUserScoreProcessDefinition);
+    }
+
+    /**
+     * 查询用户权限信息列表
+     *
+     * @param request 查询请求
+     * @return 用户权限信息列表
+     */
+    public List<UserJurisdictionInfo> queryUserJurisdictionInfos(QueryJurisdictionRequest request) {
+        // 创建上下文
+        QueryUserJurisdictionContext context = queryUserJurisdictionProcessDefinition.createContext();
+        // 设置上下文
+        context.setRequest(request);
+        // 执行流程
+        engine.execute(context, queryUserJurisdictionProcessDefinition);
+        // 返回结果
+        return context.getUserJurisdictionInfos();
+    }
 }

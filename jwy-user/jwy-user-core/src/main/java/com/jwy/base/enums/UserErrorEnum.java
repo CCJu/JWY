@@ -49,7 +49,22 @@ public enum UserErrorEnum implements BaseEnum<String> {
     /**
      * 修改用户积分用户ID不能为空
      */
-    UPDATE_SCORE_USER_ID_NOT_NULL("UPDATE_SCORE_USER_ID_NOT_NULL", "修改用户积分用户ID不能为空");
+    UPDATE_SCORE_USER_ID_NOT_NULL("UPDATE_SCORE_USER_ID_NOT_NULL", "修改用户积分用户ID不能为空"),
+
+    /**
+     * 查询用户权限请求不为空
+     */
+    QUERY_USER_JURISDICTION_REQUEST_NOT_NULL("QUERY_USER_JURISDICTION_REQUEST_NOT_NULL", "查询用户权限请求不为空"),
+
+    /**
+     * 查询用户权限角色名不为空
+     */
+    QUERY_USER_JURISDICTION_ROLE_NAME_NOT_NULL("QUERY_USER_JURISDICTION_ROLE_NAME_NOT_NULL", "查询用户权限角色名不为空"),
+
+    /**
+     * 查询用户权限用户ID不为空
+     */
+    QUERY_USER_JURISDICTION_USER_ID_NOT_NULL("QUERY_USER_JURISDICTION_USER_ID_NOT_NULL", "查询用户权限用户ID不为空");
 
     /**
      * 错误值

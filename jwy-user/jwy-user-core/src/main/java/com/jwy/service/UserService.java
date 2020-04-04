@@ -7,6 +7,7 @@ package com.jwy.service;
 import com.jwy.base.expection.UserException;
 import com.jwy.domain.*;
 import com.jwy.workflow.login.LoginSupport;
+import com.jwy.workflow.user.UserSupport;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,9 @@ public class UserService {
 
     @Resource
     private LoginSupport loginSupport;
+
+    @Resource
+    private UserSupport userSupport;
 
     public UserResult<LoginResponse> login(LoginRequest request) {
         try {
@@ -60,7 +64,16 @@ public class UserService {
     }
 
     public UserResult<Void> updateUserScore(String userId, int score) {
-        return null;
+        try {
+            userSupport.updateUserScore(userId, score);
+            return UserResult.success(null);
+        } catch (UserException e) {
+            log.error("更新用户积分异常", e);
+            return UserResult.fail(e.getErrorEnum().getDesc());
+        } catch (Throwable e) {
+            log.error("更新用户积分捕捉到异常", e);
+            return UserResult.fail(e.getMessage());
+        }
     }
 
     public UserResult<Boolean> userCheckout(JwyRequest request) {
