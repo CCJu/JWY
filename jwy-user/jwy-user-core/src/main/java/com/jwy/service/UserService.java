@@ -93,6 +93,14 @@ public class UserService {
     }
 
     public UserResult<Boolean> userCheckout(JwyRequest request) {
-        return null;
+        try {
+            return UserResult.success(userSupport.userCheckout(request));
+        } catch (UserException e) {
+            log.error("用户校验异常", e);
+            return UserResult.fail(e.getErrorEnum().getDesc());
+        } catch (Throwable e) {
+            log.error("用户校验捕捉到异常", e);
+            return UserResult.fail(e.getMessage());
+        }
     }
 }

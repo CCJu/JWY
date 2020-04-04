@@ -4,11 +4,10 @@
  */
 package com.jwy.workflow.user;
 
-import com.jwy.domain.QueryJurisdictionRequest;
-import com.jwy.domain.QueryUserInfoRequest;
-import com.jwy.domain.UserInfo;
-import com.jwy.domain.UserJurisdictionInfo;
+import com.jwy.domain.*;
 import com.jwy.workflow.Engine;
+import com.jwy.workflow.user.check.UserCheckoutContext;
+import com.jwy.workflow.user.check.UserCheckoutProcessDefinition;
 import com.jwy.workflow.user.info.query.QueryUserInfoContext;
 import com.jwy.workflow.user.info.query.QueryUserInfoProcessDefinition;
 import com.jwy.workflow.user.jurisdiction.QueryUserJurisdictionContext;
@@ -42,6 +41,9 @@ public class UserSupport {
 
     @Resource
     private QueryUserInfoProcessDefinition queryUserInfoProcessDefinition;
+
+    @Resource
+    private UserCheckoutProcessDefinition userCheckoutProcessDefinition;
 
     /**
      * 修改用户积分
@@ -91,5 +93,22 @@ public class UserSupport {
         engine.execute(context, queryUserInfoProcessDefinition);
         // 返回结果
         return context.getUserInfos();
+    }
+
+    /**
+     * 用户校验请求
+     *
+     * @param request 请求参数
+     * @return 是否通过
+     */
+    public Boolean userCheckout(JwyRequest request) {
+        // 创建上下文
+        UserCheckoutContext context = userCheckoutProcessDefinition.createContext();
+        // 设置上下文
+        context.setRequest(request);
+        // 执行流程
+        engine.execute(context, userCheckoutProcessDefinition);
+        // 返回结果
+        return context.getPass();
     }
 }
