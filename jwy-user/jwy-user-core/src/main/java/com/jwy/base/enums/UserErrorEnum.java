@@ -69,7 +69,27 @@ public enum UserErrorEnum implements BaseEnum<String> {
     /**
      * 查询用户信息请求为空
      */
-    QUERY_USER_INFO_REQUEST_NOT_NULL("QUERY_USER_INFO_NOT_NULL", "查询用户信息请求为空");
+    QUERY_USER_INFO_REQUEST_NOT_NULL("QUERY_USER_INFO_NOT_NULL", "查询用户信息请求为空"),
+
+    /**
+     * 用户校验请求为空
+     */
+    USER_CHECKOUT_REQUEST_NULL("USER_CHECKOUT_REQUEST_NULL", "用户校验请求为空"),
+
+    /**
+     * 用户校验请求用户ID为空
+     */
+    USER_CHECKOUT_USER_ID_NULL("USER_CHECKOUT_USER_ID_NULL", "用户校验请求用户ID为空"),
+
+    /**
+     * 用户校验请求token为空
+     */
+    USER_CHECKOUT_TOKEN_NULL("USER_CHECKOUT_TOKEN_NULL", "用户校验请求token为空"),
+
+    /**
+     * 用户校验请求请求地址为空
+     */
+    USER_CHECKOUT_SERVICE_URL_NULL("USER_CHECKOUT_SERVICE_URL_NULL", "用户校验请求请求地址为空");
 
     /**
      * 错误值

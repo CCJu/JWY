@@ -4,6 +4,8 @@
  */
 package com.jwy.domain;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -12,6 +14,7 @@ import java.io.Serializable;
  * @author juchengcheng
  * @version : UserJurisdictionInfo.java,v 0.1 2020年03月18日 10:45
  */
+@Data
 public class UserJurisdictionInfo implements Serializable {
 
     private static final long serialVersionUID = 3230805601626550794L;

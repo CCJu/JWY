@@ -21,4 +21,5 @@ public class JwyRequest implements Serializable {
 
     private String serviceUrl;
 
+    private String token;
 }
