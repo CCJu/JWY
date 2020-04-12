@@ -8,6 +8,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.jwy.domain.*;
 import com.jwy.facade.UserFacade;
 import com.jwy.service.UserService;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,7 +19,8 @@ import java.util.List;
  * @author juchengcheng
  * @version : UserFacadeIpl.java,v 0.1 2020年03月18日 22:15
  */
-@Service(version = "1.0.0")
+@Service(version = "1.0.0", interfaceClass = UserFacade.class, timeout = 6000)
+@Component
 public class UserFacadeImpl implements UserFacade {
 
     @Resource

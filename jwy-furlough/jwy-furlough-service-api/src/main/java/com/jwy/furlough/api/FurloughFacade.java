@@ -4,9 +4,10 @@
  */
 package com.jwy.furlough.api;
 
+import com.jwy.furlough.domain.FurloughQueryRequest;
 import com.jwy.furlough.domain.FurloughRecord;
 import com.jwy.furlough.domain.FurloughRequest;
-import com.jwy.furlough.domain.FurloughResponse;
+import com.jwy.furlough.domain.FurloughResult;
 
 /**
  * 请假模块门面类
@@ -22,13 +23,13 @@ public interface FurloughFacade {
      * @param request 请假请求
      * @return 响应
      */
-    FurloughResponse furlough(FurloughRequest request);
+    FurloughResult<Void> furlough(FurloughRequest request);
 
     /**
      * 查询请假记录详情
      *
-     * @param furloughId 请求ID
+     * @param queryRequest 查询请求
      * @return 请假记录详情
      */
-    FurloughRecord queryFurloughDetail(String furloughId);
+    FurloughResult<FurloughRecord> queryFurloughDetail(FurloughQueryRequest queryRequest);
 }

@@ -11,6 +11,7 @@ import com.jwy.domain.LoginResponse;
 import com.jwy.domain.UserResult;
 import com.jwy.facade.LoginFacade;
 import com.jwy.service.UserService;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
@@ -18,7 +19,8 @@ import javax.annotation.Resource;
  * @author juchengcheng
  * @version : LoginFacadeImpl.java,v 0.1 2020年03月19日 16:20
  */
-@Service(version = "1.0.0")
+@Service(version = "1.0.0", interfaceClass = LoginFacade.class, timeout = 6000)
+@Component
 public class LoginFacadeImpl implements LoginFacade {
 
     @Resource

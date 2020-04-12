@@ -16,12 +16,14 @@
             <groupId>com.jfc</groupId>
             <artifactId>jwy-furlough-core</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>com.jfc</groupId>
             <artifactId>jwy-furlough-service-api</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
