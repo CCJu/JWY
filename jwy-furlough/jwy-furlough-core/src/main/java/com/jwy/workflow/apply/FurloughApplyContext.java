@@ -4,6 +4,7 @@
  */
 package com.jwy.workflow.apply;
 
+import com.jwy.entity.FurloughDto;
 import com.jwy.furlough.domain.FurloughRequest;
 import com.jwy.workflow.BaseProcessContext;
 import lombok.Data;
@@ -23,4 +24,9 @@ public class FurloughApplyContext extends BaseProcessContext {
      * 请假申请请求
      */
     private FurloughRequest request;
+
+    /**
+     * 请假Dto
+     */
+    private FurloughDto furloughDto;
 }

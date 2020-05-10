@@ -21,6 +21,4 @@ interface FurloughApplyNodeNames extends NodeNames {
     String SAVE_DATA = "保存数据";
 
     String SEND_APPROVE = "发送审批";
-
-    String REMOVE_LOCK = "移除锁";
 }

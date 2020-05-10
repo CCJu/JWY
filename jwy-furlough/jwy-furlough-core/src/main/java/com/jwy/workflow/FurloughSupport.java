@@ -7,6 +7,8 @@ package com.jwy.workflow;
 import com.jwy.furlough.domain.FurloughQueryRequest;
 import com.jwy.furlough.domain.FurloughRecord;
 import com.jwy.furlough.domain.FurloughRequest;
+import com.jwy.workflow.apply.FurloughApplyContext;
+import com.jwy.workflow.apply.FurloughApplyProcessDefinition;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -21,7 +23,11 @@ public class FurloughSupport {
     @Resource
     private Engine engine;
 
+    @Resource
+    private FurloughApplyProcessDefinition apply;
+
     public void furlough(FurloughRequest request) {
+        FurloughApplyContext context = apply.createContext();
         return;
     }
 

@@ -11,15 +11,19 @@ import com.jwy.base.expection.FurloughException;
 import com.jwy.domain.QueryUserInfoRequest;
 import com.jwy.domain.UserInfo;
 import com.jwy.domain.UserResult;
+import com.jwy.entity.FurloughDto;
 import com.jwy.facade.UserFacade;
 import com.jwy.furlough.domain.FurloughRequest;
+import com.jwy.mapper.FurloughMapper;
 import com.jwy.workflow.Node;
 import com.jwy.workflow.NodeResult;
 import com.jwy.workflow.apply.FurloughApplyContext;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 请假申请流程爆出数据节点
@@ -33,6 +37,9 @@ public class FurloughApplySaveDataNode implements Node<FurloughApplyContext> {
 
     @Reference(version = "1.0.0", check = false)
     private UserFacade userFacade;
+
+    @Resource
+    private FurloughMapper furloughMapper;
 
     @Override
     public String getName() {
@@ -48,7 +55,7 @@ public class FurloughApplySaveDataNode implements Node<FurloughApplyContext> {
         queryUserInfoRequest.setUserId(Lists.newArrayList(request.getUserId()));
         // 根据用户ID查询用户信息
         UserResult<List<UserInfo>> result = userFacade.queryUserInfo(queryUserInfoRequest);
-        UserInfo userInfo;
+        UserInfo userInfo = result.getData().get(0);
         // 解析dubbo响应结果
         if (result != null &&
                 result.isSuccess() &&
@@ -59,9 +66,17 @@ public class FurloughApplySaveDataNode implements Node<FurloughApplyContext> {
             throw new FurloughException(FurloughErrorEnum.FURLOUGH_REQUEST_USER_ID_ILLEGAL);
         }
         // 构造请假DTO
-
-        // 保存请假信息到数据库
-
+        FurloughDto furloughDto = FurloughDto.builder()
+                .userId(userInfo.getUserId())
+                .vacateId(UUID.randomUUID().toString())
+                .userName(userInfo.getUserName())
+                .department(userInfo.getDepartment())
+                .reason(request.getReason())
+                .type(request.getType())
+                .startTime(request.getStartTime().toString())
+                .endTime(request.getEndTime().toString())
+                .build();
+        furloughApplyContext.setFurloughDto(furloughDto);
         // 发送审批
         return NodeResult.next(FurloughApplyNodeNames.SEND_APPROVE);
     }

@@ -4,10 +4,13 @@
  */
 package com.jwy.entity;
 
+import lombok.Data;
+
 /**
  * @author juchengcheng
  * @version : UserJurisdictionDto.java,v 0.1 2020年03月25日 21:20
  */
+@Data
 public class UserJurisdictionDto {
 
     /**

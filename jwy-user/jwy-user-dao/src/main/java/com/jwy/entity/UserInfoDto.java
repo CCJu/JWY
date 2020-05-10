@@ -4,10 +4,13 @@
  */
 package com.jwy.entity;
 
+import lombok.Data;
+
 /**
  * @author juchengcheng
  * @version : UserInfoDto.java,v 0.1 2020年03月25日 20:54
  */
+@Data
 public class UserInfoDto {
 
     /**

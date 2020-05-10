@@ -8,7 +8,10 @@ import com.jwy.furlough.domain.FurloughQueryRequest;
 import com.jwy.furlough.domain.FurloughRecord;
 import com.jwy.furlough.domain.FurloughRequest;
 import com.jwy.furlough.domain.FurloughResult;
+import com.jwy.workflow.FurloughSupport;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * 请假服务
@@ -19,11 +22,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class FurloughService {
 
+    @Resource
+    private FurloughSupport furloughSupport;
+
     public FurloughResult<Void> furlough(FurloughRequest request) {
-        return null;
+        try {
+            furloughSupport.furlough(request);
+            return FurloughResult.success(null);
+        } catch (Throwable e) {
+            return FurloughResult.fail(e.getMessage());
+        }
     }
 
     public FurloughResult<FurloughRecord> queryFurloughDetail(FurloughQueryRequest queryRequest) {
-        return null;
+        try {
+            return FurloughResult.success(furloughSupport.queryFurloughDetail(queryRequest));
+        } catch (Throwable e) {
+            return FurloughResult.fail(e.getMessage());
+        }
     }
 }
